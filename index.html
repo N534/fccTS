@@ -1,0 +1,128 @@
+<html>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="cssfiles/localanimate.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+
+
+<script>
+  $(document).ready(function() {
+    $("button").addClass("animated bounce");
+    $(".well").addClass("animated shake");
+    $("#target3").addClass("animated fadeOut");
+	$("#target1").css("color", "red");
+//    $("#target1").prop("disabled", true);
+    $("#target4").remove();	
+    $("#target2").appendTo("#right-well");
+    $("#target5").clone().appendTo("#left-well");
+    $("#target1").parent().css("background-color", "red");
+	$("#left-well").children().css("color", "green");
+    $(".target:nth-child(2)").addClass("animated bounce");
+    $(".target:even").addClass("animated shake");
+//	$("body").addClass("animated hinge");
+	
+
+ });
+</script>
+
+<!-- Only change code above this line. -->
+<!--
+<script>
+function SubmitForm(){
+$('#myForm')
+    .ajaxForm({
+        url : 'localhost:8000/dateValues/December%2015%202015', // or whatever
+        dataType : 'json',
+        success : function (response) {
+            alert("The server says: " + response);
+        }
+    })
+;
+}
+</script>
+-->
+<script>
+
+</script>
+<html>
+
+
+<body>
+<div class="container-fluid">
+  <h3 class="text-primary text-center">jQuery Playground</h3>
+  <div class="row">
+    <div class="col-xs-6">
+      <h4>#left-well</h4>
+      <div class="well" id="left-well">
+        <button class="btn btn-default target" id="target1">#target1</button>
+        <button class="btn btn-default target" id="target2">#target2</button>
+        <button class="btn btn-default target" id="target3">#target3</button>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <h4>#right-well</h4>
+      <div class="well" id="right-well">
+        <button class="btn btn-default target" id="target4">#target4</button>
+        <button class="btn btn-default target" id="target5">#target5</button>
+        <button class="btn btn-default target" id="target6">#target6</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+	<form id="myForm">
+		<label for="dt1">Date input</label>
+		<input type="text" class="form-control" id="dt1"placeholder="Date"></input>
+		<label for="dt1">Date output</label>
+		<div><input type="button" id="Convert1" name="convert" class="btn-primary" value="Convert now" "></div>
+        
+	</form>
+</div>
+<div>
+<table>
+	<thead>
+		<tr>
+			<th>Id </th>
+			<th>' 'Value </th>
+		</tr>
+	</thead>
+	<tbody>
+		
+	</tbody>
+
+</table>
+
+</div>
+
+
+
+<script>
+$(function(){
+var u = 1450137600;
+	$('#Convert1').on('click',function(){
+		console.log ('Test');
+		$.ajax({
+			url:'/dateValues/'+ u,
+			contentType:'application/json',
+			success: function(response){
+				console.log(response);
+				var tbodyinf = $('tbody');
+				tbodyinf.html('');
+				response.myMusic.forEach(function(myMusic){
+					tbodyinf.append('\
+						<tr>\
+							<td class = "id">' +myMusic.artist + '</td>\
+							<td input tyepe="text" class = "value">' +myMusic.artist+ '</td>\
+						</tr>\
+					');
+				});
+			}
+		
+		});
+	});
+});
+</script>
+u
+</body>
+</html>
